@@ -15,6 +15,7 @@
  */
 package gala;
 
+import gala.helper.ActionListOfIndexedNodes;
 import greycat.Action;
 import greycat.Task;
 import gala.cf.ActionIfEmptyThen;
@@ -31,7 +32,9 @@ import gala.worldtime.ActionReadUpdatedTimeVar;
 
 public class Actions {
 
-    public static Action count() { return new ActionCount(); }
+    public static Action count() {
+        return new ActionCount();
+    }
 
     public static Action checkForFuture() {
         return new ActionCheckForFuture();
@@ -71,6 +74,10 @@ public class Actions {
 
     public static Action readUpdatedTimeVar(final String name) {
         return new ActionReadUpdatedTimeVar(name);
+    }
+
+    public static Action listOfIndexedNodes(final String relation) {
+        return new ActionListOfIndexedNodes(relation);
     }
 
 }

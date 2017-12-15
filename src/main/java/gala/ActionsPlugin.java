@@ -22,6 +22,7 @@ import gala.cf.ActionIfNotEmptyThenElse;
 import gala.helper.ActionCount;
 import gala.helper.ActionIncrement;
 import gala.helper.ActionKeepFirstResult;
+import gala.helper.ActionListOfIndexedNodes;
 import gala.worldtime.ActionCheckForFuture;
 import gala.worldtime.ActionExecuteAtWorldAndTime;
 import gala.worldtime.ActionReadUpdatedTimeVar;
@@ -151,6 +152,17 @@ public class ActionsPlugin implements Plugin {
                 .setFactory(new ActionFactory() {
                     public Action create(Object[] params) {
                         return readUpdatedTimeVar((String) params[0]);
+                    }
+                });
+
+        //List Of Indexed Nodes
+        graph.actionRegistry()
+                .getOrCreateDeclaration(ActionListOfIndexedNodes.NAME)
+                .setParams(Type.STRING)
+                .setDescription("list the ids of all node indexed in a local index ans put it in the current context result")
+                .setFactory(new ActionFactory() {
+                    public Action create(Object[] params) {
+                        return listOfIndexedNodes((String) params[0]);
                     }
                 });
     }
